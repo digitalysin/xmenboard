@@ -6,9 +6,12 @@
         li
           = link_to task.name, task_path(task)
           - if task.finished?
-            = " - Finished by #{task.user.first_name} at #{task.finished_at.to_s(:short)}"
+            = " - Finished at #{task.finished_at.to_s(:short)} - Assigned to #{task.user.first_name}"
           - else
-            = " - Assigned to #{task.user.first_name}"
+            = " - Open - Assigned to #{task.user.first_name}"
+
+          = " - "
+          = link_to 'Edit', edit_task_path(task)
 
 
 - if current_user.tasks.where(finished: false).present?
