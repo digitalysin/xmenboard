@@ -10,7 +10,7 @@ beast = User.create first_name: 'Beast', email: 'beast@xmen.com', password: 'sec
 
 wolverine_task = xavier.task_owners.create name: 'Kidnap Magneto', description: 'Coordinate with beast to kidnap magneto', user: wolverine
 beast_task = xavier.task_owners.create name: 'Hack Magneto Server', description: 'Coordinate with wolverine to hack magneto server', user: beast
-cyclops_task = xavier.task_owners.create name: 'Destroy Magneto Headquarter', description: 'Coordinate with Wolverine and Beast to destroy Magneto Headquarter', user: beast
+cyclops_task = xavier.task_owners.create name: 'Destroy Magneto Headquarter', description: 'Coordinate with Wolverine and Beast to destroy Magneto Headquarter', user: cyclops
 
 wolverine_task.comments.create body: 'wakarimasu', user: wolverine
 beast_task.comments.create body: 'roger that!', user: beast
