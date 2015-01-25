@@ -35,7 +35,7 @@ RSpec.configure do |config|
   config.after(:each)  { DatabaseCleaner.clean }
 
   config.include Capybara::DSL, type: :request
-  config.include Devise::TestHelpers, tupe: :controller
+  config.include Devise::TestHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
 end
 
