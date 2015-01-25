@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title Proman
+    = stylesheet_link_tag :application, 'data-turbolinks-track' => true
+    = javascript_include_tag :application, 'data-turbolinks-true' => true
+    = csrf_meta_tags
+  body
+    = render 'shared/header'
+    .container_left
+      - if alert.present?
+        .error_message = alert
+      - if notice.present?
+        .success_message = notice
+      = yield
+    = render "shared/footer"

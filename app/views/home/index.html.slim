@@ -1,0 +1,6 @@
+- if current_user.task_owners.present?
+  .container_title Owned Tasks
+  .container_body
+    ul
+      - current_user.task_owners.each do |task|
+        li = task.name
