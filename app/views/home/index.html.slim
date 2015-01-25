@@ -3,4 +3,22 @@
   .container_body
     ul
       - current_user.task_owners.each do |task|
+        li
+          = task.name
+          - if task.finished?
+            = " - Finished by #{task.user.first_name} at #{task.finished_at.to_s(:short)}"
+
+
+- if current_user.tasks.where(finished: false).present?
+  .container_title Pending Tasks
+  .container_body
+    ul
+      - current_user.tasks.where(finished: false).each do |task|
+        li = task.name
+
+- if current_user.tasks.where(finished: true).present?
+  .container_title Finished Tasks
+  .container_body
+    ul
+      - current_user.tasks.where(finished: true).each do |task|
         li = task.name
