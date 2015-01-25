@@ -38,4 +38,16 @@ describe 'tasks/show.html.slim' do
     it { is_expected.to have_content 'Open' }
     it { is_expected.to have_content task.created_at.to_s(:short) }
   end
+
+  context 'when task has comments' do
+    let!(:comment) { create :comment, user: user, task: task }
+
+    before do
+      assign :task, task
+      render
+    end
+
+    it { is_expected.not_to have_content "There is no comments yet" }
+    it { is_expected.to have_content comment.body }
+  end
 end

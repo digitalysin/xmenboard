@@ -17,3 +17,29 @@
     == " - #{link_to 'Edit', edit_task_path(@task)}"
 
   .project_description= @task.description
+
+  .comment_area
+    - if @task.comments.blank?
+      h3 There is no comments yet
+    - else
+      h3 Comments
+      ul
+        - @task.comments.each do |comment|
+          li
+            = comment.body
+            .project_status
+              Created at :
+              = comment.created_at.to_s(:short)
+              = " - by #{comment.user.first_name}"
+
+    h2 Create comment
+    = form_for [@task, Comment.new] do |f|
+      table
+        tr
+          td = f.text_area :body
+        tr
+          td = f.submit
+
+
+
+
