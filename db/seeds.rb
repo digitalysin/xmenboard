@@ -16,3 +16,15 @@ wolverine_task.comments.create body: 'wakarimasu', user: wolverine
 beast_task.comments.create body: 'roger that!', user: beast
 cyclops_task.comments.create body: '86!', user: cyclops
 
+users = [xavier, wolverine, cyclops, beast]
+
+23.times do
+  owner = users.sample
+  assigned = users.sample
+  finished = [true, false].sample
+
+  task = FactoryGirl.create :task, owner: owner, user: assigned, finished: finished
+
+  7.times { task.comments.create user: [owner, assigned].sample }
+end
+
