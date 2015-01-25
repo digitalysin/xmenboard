@@ -1,0 +1,19 @@
+.container_title task detail
+.container_body
+  h1= @task.name.humanize
+  .project_status
+    Status
+    - if @task.finished?
+      span.project_closed
+        |Finished
+        = " - #{@task.finished_at.to_s(:short)}"
+    - else
+      span.project_open
+        |Open
+        = " - #{@task.created_at.to_s(:short)}"
+
+    = " - Assigned to #{@task.user.first_name}"
+
+    == " - #{link_to 'Edit', edit_task_path(@task)}"
+
+  .project_description= @task.description

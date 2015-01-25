@@ -93,6 +93,7 @@ h1 {
 
 .field_with_errors_box {
   border:2px solid red;font-size:12px;
+  margin-bottom: 20px;
 }
 .field_with_errors_box h3 {
   background-color:red;color:white;margin-top:0px;padding:5px;font-size:14px;
@@ -204,7 +205,8 @@ h1 {
 
 /* container_body */
 .project_status {
-  font-size:10px;margin:3px;
+  font-size:14px;
+  margin: 5px;
 }
 .project_open { color : #528D00;}
 .project_closed { color :#FCBABA;}
@@ -390,4 +392,16 @@ h3 { margin:5px 0px;}
   position:relative;
   left: -35px; top: 5px;
   float:right;
+}
+
+table {
+  input[type=text] {
+    width: 600px;
+    height: 20px;
+  }
+
+  textarea {
+    width: 600px;
+    height: 200px;
+  }
 }

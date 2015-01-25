@@ -8,7 +8,7 @@ describe 'home/index.html.slim' do
     subject { rendered }
 
     context 'when user has owned tasks' do
-      let(:task) { build :task, owner: user }
+      let(:task) { build_stubbed :task, owner: user, user: user }
       before do
         allow(user).to receive(:task_owners).and_return [task]
         render
@@ -18,8 +18,8 @@ describe 'home/index.html.slim' do
     end
 
     context 'when user has finished owned task' do
-      let(:wolverine) { build :user, first_name: 'Wolverine' }
-      let(:task) { build :task, owner: user, user: wolverine, finished: true, finished_at: 1.day.ago }
+      let(:wolverine) { build_stubbed :user, first_name: 'Wolverine' }
+      let(:task) { build_stubbed :task, owner: user, user: wolverine, finished: true, finished_at: 1.day.ago }
 
       before do
         allow(user).to receive(:task_owners).and_return [task]
@@ -37,10 +37,11 @@ describe 'home/index.html.slim' do
 
 
   context 'Pending Tasks' do
+    let(:owner) { create :user }
     subject { rendered }
 
     context 'when user has pending task' do
-      let!(:task) { create :task, user: user, finished: false }
+      let!(:task) { create :task, user: user, owner: owner, finished: false }
 
       before { render }
 
@@ -49,7 +50,7 @@ describe 'home/index.html.slim' do
     end
 
     context 'when user has no pending task' do
-      let!(:task) { create :task, user: user, finished: true }
+      let!(:task) { create :task, user: user, owner: owner, finished: true }
 
       before { render }
 
@@ -58,10 +59,11 @@ describe 'home/index.html.slim' do
   end
 
   context 'Finished Task' do
+    let(:owner) { create :user }
     subject { rendered }
 
     context 'when user has finished task' do
-      let!(:task) { create :task, user: user, finished: true }
+      let!(:task) { create :task, user: user, owner: owner, finished: true }
 
       before { render }
 
